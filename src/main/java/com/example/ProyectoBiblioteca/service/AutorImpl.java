@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,10 +26,15 @@ public class AutorImpl implements AutorI {
     }
 
     @Override
-    public AutorDto findAutor(String surename) {
-        Autor autorEntity = autorRepository.findBySurname(surename);
-        AutorDto autorDto = MapperAutor.toDto(autorEntity);
-        return autorDto;
+    public AutorDto findAutor(Long id) {
+        Optional<Autor> autorEntity = autorRepository.findById(id);
+        if (autorEntity.isPresent()) {
+            AutorDto autorDto = MapperAutor.toDto(autorEntity.get());
+            return autorDto;
+        }
+          else {
+                return null;
+          }
     }
 
     @Override

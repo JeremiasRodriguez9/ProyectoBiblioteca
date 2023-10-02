@@ -8,7 +8,7 @@ public interface AutorI {
 
     List<AutorDto> findAllAutores();
 
-    AutorDto findAutor(String surname);
+    AutorDto findAutor(Long id);
 
     String saveAutor(AutorDto autorDto);
 

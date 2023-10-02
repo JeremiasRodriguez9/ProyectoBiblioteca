@@ -23,8 +23,8 @@ public class AutorController {
     }
 
     @GetMapping("/findAutor")
-    public ResponseEntity<AutorDto> findAutor(@RequestParam String surname){
-        AutorDto autorDto = autorService.findAutor(surname);
+    public ResponseEntity<AutorDto> findAutor(@RequestParam Long id){
+        AutorDto autorDto = autorService.findAutor(id);
         return new ResponseEntity<> (autorDto, HttpStatus.OK);
     }
 
